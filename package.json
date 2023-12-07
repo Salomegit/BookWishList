@@ -1,0 +1,20 @@
+{
+  "name": "bookwishlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Salomegit/BookWishList.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Salomegit/BookWishList/issues"
+  },
+  "homepage": "https://github.com/Salomegit/BookWishList#readme"
+}
