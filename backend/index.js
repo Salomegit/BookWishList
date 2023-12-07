@@ -15,3 +15,8 @@ app.listen (8800,()=> {
     console.log("connected to Backend")
 
 })
+
+
+app.get("/" , (res,req) => {
+    res.json("Connected to Backend")
+})
