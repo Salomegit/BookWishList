@@ -34,11 +34,14 @@ app.post("/books" , (req,res) => {
     };
     const q = "INSERT INTO chasing_book.book SET ?"
 
+   
     db.query(q , bookData, (err,data) =>{
         if (err) return res.json("err")
-        return res.json("Book has been created sccessfully")
+        return res.json(data)
     })
 })
+
+
 
 app.get("/books", (req, res) => {
     const q = "SELECT * FROM chasing_book.book;";
