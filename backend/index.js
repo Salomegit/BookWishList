@@ -13,6 +13,10 @@ const db = mysql.createConnection({
 
 )
  
+
+app.use(express.json());
+
+
 app.listen (8801,()=> {
     console.log("connected to Backend")
 
@@ -26,18 +30,22 @@ app.get("/" , (req,res) => {
 
 
 app.post("/books" , (req,res) => {
+
+    const  {book_title,decscription,cover } = req.body
+
     const bookData = {
-        book_title: "The Great Gatsby",
-        decscription: "Tis is a cool book",
-        cover: "cover.png",
+        book_title,
+        decscription,
+        cover,
         // Add more fields as needed
     };
+  
     const q = "INSERT INTO chasing_book.book SET ?"
 
    
     db.query(q , bookData, (err,data) =>{
         if (err) return res.json("err")
-        return res.json(data)
+        return res.json("book is added succefully")
     })
 })
 
