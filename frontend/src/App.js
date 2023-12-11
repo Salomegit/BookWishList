@@ -1,10 +1,12 @@
+import { BrowserRouter as Router, Route, BrowserRouter } from 'react-router-dom';
 
 
 function App() {
   return (
-    <div className="App">
-     <p>Hello World</p>
-    </div>
+    <BrowserRouter>
+    
+    <Route path='/' Component={Home}></Route>
+    </BrowserRouter>  
   );
 }
 
