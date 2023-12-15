@@ -16,7 +16,7 @@ const db = mysql.createConnection({
  
 
 app.use(express.json());
-// app.use(cors())
+app.use(cors())
 
 app.listen (8801,()=> {
     console.log("connected to Backend")

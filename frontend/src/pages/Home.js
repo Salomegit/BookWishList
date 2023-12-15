@@ -10,14 +10,15 @@ const Home = () => {
     const fetchAllBooks = async () =>{
         try{
            const res = await axios.get("http://localhost:8801/books")
+         //   setBooks(res,data)
            console.log(res)
         }
            catch(err)
         {
         console.log(err)
         }
-        fetchAllBooks()
-    }
+      }
+      fetchAllBooks()
    },[])
 
 
