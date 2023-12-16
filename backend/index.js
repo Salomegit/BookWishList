@@ -13,7 +13,9 @@ const db = mysql.createConnection({
 }
 
 )
- 
+
+
+
 
 app.use(express.json());
 app.use(cors())
@@ -58,4 +60,11 @@ app.get("/books", (req, res) => {
         if (err) return res.json(err);
         return res.json(data);
     });
+});
+
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
 });
