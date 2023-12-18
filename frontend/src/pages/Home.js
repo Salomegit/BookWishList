@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from "axios"
+import { Link } from 'react-router-dom'
+
 
 const Home = () => {
   const [books, setBooks] = useState([])
@@ -10,7 +11,7 @@ const Home = () => {
     const fetchAllBooks = async () => {
       try {
         const res = await axios.get("http://localhost:8801/books")
-        //   setBooks(res,data)
+          setBooks(res.data)
         console.log(res)
       }
       catch (err) {
@@ -25,7 +26,6 @@ const Home = () => {
   return (
     <div>
       <h1>Book A wish </h1>
-      <Link to="/add">Add book</Link>
       <div className='book'>
         {books.map((book) => (
           <div className='book' key={book.id}>
@@ -36,6 +36,7 @@ const Home = () => {
 
           </div>
         ))}
+            <button><Link to="/add">Add a book</Link></button>
 
       </div>
 

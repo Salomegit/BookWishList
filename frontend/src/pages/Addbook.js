@@ -2,9 +2,9 @@ import React from 'react'
 
 const Addbook = () => {
   return (
-    <div>
+    <div className='form'>
         <p>Add book</p>
-      
+        <input type='text' placeholder='Book Title'/>
     </div>
   )
 }
