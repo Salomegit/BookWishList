@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom'
-
+import "../styles/style.css"
 
 const Home = () => {
   const [books, setBooks] = useState([])
@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <div>
       <h1>Book A wish </h1>
-      <div className='book'>
+      <div className='books' >
         {books.map((book) => (
           <div className='book' key={book.id}>
             {book.cover && <img src={book.cover} alt='' />}

@@ -2,9 +2,12 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Editbook from './pages/Editbook';
 import Addbook from './pages/Addbook';
+import "./styles/style.css"
 
 function App() {
   return (
+    <div className='app'> 
+
 <BrowserRouter>
 
 <Routes>
@@ -16,6 +19,7 @@ function App() {
 
 </Routes>
 </BrowserRouter>
+    </div>
   );
 }
 

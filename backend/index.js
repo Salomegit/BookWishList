@@ -34,12 +34,13 @@ app.get("/" , (req,res) => {
 
 app.post("/books" , (req,res) => {
 
-    const  {book_title,decscription,cover } = req.body
+    const  {book_title,decscription,cover,price } = req.body
 
     const bookData = {
         book_title,
         decscription,
         cover,
+        price
         // Add more fields as needed
     };
   
