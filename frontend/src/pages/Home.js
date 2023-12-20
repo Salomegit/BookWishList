@@ -33,6 +33,8 @@ const Home = () => {
             <h1>{book.book_title}</h1>
             <p>{book.decscription}</p>
             <span>{book.price}</span>
+            <button className='delete'>delete</button>
+        <button className='update'>update</button>
 
           </div>
         ))}

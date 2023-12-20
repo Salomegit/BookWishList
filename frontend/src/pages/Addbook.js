@@ -37,6 +37,8 @@ const Addbook = () => {
         <input type='text' placeholder='Book Description' onChange={onChangebook}  name="decscription"/>
         <input type='text' placeholder='Book Price' onChange={onChangebook}  name="price"/>
         <input type='text' placeholder='Book Cover' onChange={onChangebook}  name='cover'/>
+       
+
        <button onClick = {handleChange}> Add </button>
     </div>
   )
