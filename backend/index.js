@@ -69,3 +69,15 @@ app.use((err, req, res, next) => {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
 });
+
+
+app.delete("/books/:id_book", (req,res) => {  
+   const bookId = req.params.id_book;
+   const q = "DELETE FROM book WHERE id_book = ?"
+
+   db.query(q,[bookId] , (err,data)=> {
+    if (err) return  res.json(console.log(err))
+    return res.json(console.log("book deleted succefully"))
+
+   })
+})
