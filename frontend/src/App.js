@@ -13,7 +13,7 @@ function App() {
 <Routes>
 
     <Route path='/' exact Component={Home}/>
-    <Route path='/edit' Component={Editbook}/>
+    <Route path='/edit/:id_book' Component={Editbook}/>
     <Route path='/add' Component={Addbook}/>
 
 

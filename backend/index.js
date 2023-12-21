@@ -81,3 +81,24 @@ app.delete("/books/:id_book", (req,res) => {
 
    })
 })
+
+app.put("/books/:id_book", (req,res) => {  
+    const bookId = req.params.id_book;
+    const q = "UPDATE book SET book_title = ?, decscription = ?, cover = ?, price = ? WHERE id_book = ?";
+ 
+    const  {book_title,decscription,cover,price } = req.body
+
+    const bookDataEdit = {
+        book_title,
+        decscription,
+        cover,
+        price,
+        bookId
+        // Add more fields as needed
+    }
+    db.query(q,bookDataEdit , (err,data)=> {
+     if (err) return  res.json(console.log(err))
+     return res.json(console.log("book Edited succefully"))
+ 
+    })
+ })

@@ -31,6 +31,8 @@ const Addbook = () => {
 
   console.log(book)
   return (
+    <div>
+
     <div className='form'>
         <p>Add book</p>
         <input type='text' placeholder='Book Title' onChange={onChangebook} name="book_title"/>
@@ -39,7 +41,8 @@ const Addbook = () => {
         <input type='text' placeholder='Book Cover' onChange={onChangebook}  name='cover'/>
        
 
-       <button onClick = {handleChange}> Add </button>
+    </div>
+       <button  onClick = {handleChange}> Add </button>
     </div>
   )
 }

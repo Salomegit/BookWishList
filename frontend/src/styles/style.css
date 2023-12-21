@@ -48,5 +48,24 @@ img{
 
 }
 
-button{
+.form{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input{
+    width: 250px;
+    padding: 10px;
+    border: 2px solid rgb(204, 204, 243);
+
+}
+
+.formButton{
+    border:none;
+    padding: 10px;
+    background-color: lightgreen;
+    color: white;
+    gap: 10px;
+    font-weight: bold;
 }
