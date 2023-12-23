@@ -32,9 +32,15 @@ app.get("/" , (req,res) => {
 
 
 
-app.post("/books" , (req,res) => {
+app.post("/books", (req, res) => {
+    const { book_title, decscription, price } = req.body;
+    let cover = ''; // Variable to store the file path or file name after upload
 
-    const  {book_title,decscription,cover,price } = req.body
+    // Check if file is included in the request (assuming multipart/form-data)
+    if (req.file) {
+        // Assuming the file is saved in 'uploads' directory
+        cover = req.file.path; // Set cover to the file path where it's saved
+    }
 
     const bookData = {
         book_title,
@@ -43,15 +49,16 @@ app.post("/books" , (req,res) => {
         price
         // Add more fields as needed
     };
-  
-    const q = "INSERT INTO chasing_book.book SET ?"
 
-   
-    db.query(q , bookData, (err,data) =>{
-        if (err) return res.json("err")
-        return res.json("book is added succefully")
-    })
-})
+    const q = "INSERT INTO chasing_book.book SET ?";
+
+    db.query(q, bookData, (err, data) => {
+        if (err) {
+            return res.status(500).json({ error: "Error adding book" });
+        }
+        return res.status(200).json({ message: "Book added successfully" });
+    });
+});
 
 
 
@@ -82,23 +89,18 @@ app.delete("/books/:id_book", (req,res) => {
    })
 })
 
-app.put("/books/:id_book", (req,res) => {  
+app.put("/books/:id_book", (req, res) => {
     const bookId = req.params.id_book;
-    const q = "UPDATE book SET book_title = ?, decscription = ?, cover = ?, price = ? WHERE id_book = ?";
+    const q = "UPDATE book SET `book_title` = ?, `decscription` = ?, `cover` = ?, `price` = ? WHERE id_book = ?";
  
-    const  {book_title,decscription,cover,price } = req.body
+    const { book_title, decscription, cover, price } = req.body;
+    const bookDataEdit = [book_title, decscription, cover, price, bookId]; // Array of values in the correct order
 
-    const bookDataEdit = {
-        book_title,
-        decscription,
-        cover,
-        price,
-        bookId
-        // Add more fields as needed
-    }
-    db.query(q,bookDataEdit , (err,data)=> {
-     if (err) return  res.json(console.log(err))
-     return res.json(console.log("book Edited succefully"))
- 
-    })
- })
+    db.query(q, bookDataEdit, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        return res.json("Book edited successfully");
+    });
+});

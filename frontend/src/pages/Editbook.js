@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useLocation } from 'react-router-dom'
 import "../styles/style.css"
 const Editbook = () => {
 
@@ -8,12 +8,14 @@ const Editbook = () => {
     book_title: "",
     decscription : "",
     cover:"",
-    price: null
+    price: ""
 
   })
  
   const navigate = useNavigate() 
+  const location = useLocation()
 
+ const bookloc = location.pathname.split("/")[2]
   const onChangebook = (e) =>{
     setBook(prev=> ({...prev,[e.target.name] : e.target.value}))
   }
@@ -21,7 +23,7 @@ const Editbook = () => {
   const handleChange = async e => {
   e.preventDefault()
   try {
-  await axios.put("http://localhost:8801/books", book)
+  await axios.put("http://localhost:8801/books/" + bookloc, book)
   navigate("/")
   }
   catch(err){
@@ -29,7 +31,6 @@ const Editbook = () => {
   }
   }
 
-  console.log(book)
   return (
     <div>
 
@@ -38,7 +39,7 @@ const Editbook = () => {
         <input type='text' placeholder='Book Title' onChange={onChangebook} name="book_title"/>
         <input type='text' placeholder='Book Description' onChange={onChangebook}  name="decscription"/>
         <input type='text' placeholder='Book Price' onChange={onChangebook}  name="price"/>
-        <input type='text' placeholder='Book Cover' onChange={onChangebook}  name='cover'/>
+        <input type='file'  placeholder='Add Book Image' onChange={onChangebook}  name='cover'/>
        
 
     </div>
