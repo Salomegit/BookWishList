@@ -32,15 +32,9 @@ app.get("/" , (req,res) => {
 
 
 
-app.post("/books", (req, res) => {
-    const { book_title, decscription, price } = req.body;
-    let cover = ''; // Variable to store the file path or file name after upload
+app.post("/books" , (req,res) => {
 
-    // Check if file is included in the request (assuming multipart/form-data)
-    if (req.file) {
-        // Assuming the file is saved in 'uploads' directory
-        cover = req.file.path; // Set cover to the file path where it's saved
-    }
+    const  {book_title,decscription,cover,price } = req.body
 
     const bookData = {
         book_title,
@@ -49,16 +43,15 @@ app.post("/books", (req, res) => {
         price
         // Add more fields as needed
     };
+  
+    const q = "INSERT INTO chasing_book.book SET ?"
 
-    const q = "INSERT INTO chasing_book.book SET ?";
-
-    db.query(q, bookData, (err, data) => {
-        if (err) {
-            return res.status(500).json({ error: "Error adding book" });
-        }
-        return res.status(200).json({ message: "Book added successfully" });
-    });
-});
+   
+    db.query(q , bookData, (err,data) =>{
+        if (err) return res.json("err")
+        return res.json("book is added succefully")
+    })
+}) 
 
 
 
