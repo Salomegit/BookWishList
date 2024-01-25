@@ -39,7 +39,7 @@ const Editbook = () => {
         <input type='text' placeholder='Book Title' onChange={onChangebook} name="book_title"/>
         <input type='text' placeholder='Book Description' onChange={onChangebook}  name="decscription"/>
         <input type='text' placeholder='Book Price' onChange={onChangebook}  name="price"/>
-        <input type='file'  placeholder='Add Book Image' onChange={onChangebook}  name='cover'/>
+        <input type='file'   placeholder='Add Book Image' onChange={onChangebook}  name='cover'/>
        
 
     </div>
